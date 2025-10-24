@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Candled Co</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Poppins", sans-serif;
+    }
+
+    body {
+      background-color: #ffffff;
+      color: #333;
+      scroll-behavior: smooth;
+    }
+
+    /* Header */
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 40px;
+      background-color: #ffffff;
+      border-bottom: 2px solid #f1e6c6;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .logo img {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      border: 2px solid #c9a646;
+    }
+
+    .logo h1 {
+      font-size: 2em;
+      color: #c9a646;
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+
+    .nav a {
+      margin: 0 15px;
+      text-decoration: none;
+      color: #5c4b1b;
+      font-weight: 500;
+      transition: color 0.3s;
+      font-size: 1.2em;
+    }
+
+    .nav a:hover {
+      color: #c9a646;
+    }
+
+    /* Hero Section */
+    .hero {
+      text-align: center;
+      padding: 100px 20px;
+      background: linear-gradient(to bottom, #fff8e1, #ffffff);
+    }
+
+    .hero h2 {
+      font-family: 'Playfair Display';
+      font-style: italic;
+      font-size: 2em;
+      color: #5c4b1b;
+    }
+
+    .hero p {
+      margin-top: 20px;
+      font-size: 1.5em;
+      color: #7a6a3a;
+    }
+
+    .hero .btn {
+      margin-top: 25px;
+      padding: 12px 30px;
+      background-color: #c9a646;
+      color: #fff;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: all 0.3s;
+    }
+
+    .hero .btn:hover {
+      background-color: #b59337;
+    }
+
+    /* Product Section */
+    .products {
+      padding: 60px 40px;
+      text-align: center;
+      background-color: #fffaf0;
+    }
+
+    .products h2 {
+      font-size: 2em;
+      color: #5c4b1b;
+      margin-bottom: 40px;
+    }
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 35px;
+    }
+
+    .product-card {
+      background-color: #ffffff;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(201, 166, 70, 0.2);
+      padding: 20px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .product-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 14px rgba(201, 166, 70, 0.3);
+    }
+
+    .product-card img {
+      width: 100%;
+      height: 230px;
+      object-fit: cover;
+      border-radius: 10px;
+    }
+
+    .product-card h3 {
+      margin-top: 10px;
+      color: #5c4b1b;
+      font-size: 1.2em;
+    }
+
+    .product-card p {
+      color: #c9a646;
+      font-weight: bold;
+      margin-top: 5px;
+    }
+
+    .buy-btn {
+      margin-top: 10px;
+      padding: 10px 20px;
+      background-color: #c9a646;
+      color: #fff;
+      border: none;
+      border-radius: 25px;
+      cursor: pointer;
+      transition: 0.3s;
+      font-weight: 500;
+    }
+
+    .buy-btn:hover {
+      background-color: #b59337;
+    }
+
+    /* About Section */
+    .about {
+      background-color: #fff8e1;
+      padding: 60px 40px;
+      text-align: justify;
+    }
+
+    .about h2 {
+      font-size: 2em;
+      color: #5c4b1b;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    .about p {
+      max-width: 700px;
+      margin: 0 auto;
+      color: #7a6a3a;
+      font-size: 1.1em;
+      line-height: 2;
+    }
+
+    .owner-gallery {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;            /* space between images */
+  margin-bottom: 25px;
+  flex-wrap: nowrap;    /* keeps in one line */
+}
+
+.owner-gallery img {
+  width: 220px;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 3px solid #bfa760; /* gold border */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s ease;
+}
+
+.owner-gallery img:hover {
+  transform: scale(1.05);
+}
+
+
+    /* Testimonials */
+    .testimonials {
+      padding: 60px 40px;
+      text-align: center;
+      background-color: #ffffff;
+    }
+
+    .testimonials h2 {
+      font-size: 2em;
+      color: #5c4b1b;
+      margin-bottom: 40px;
+    }
+
+    .testimonial-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 25px;
+    }
+
+    .testimonial {
+      background-color: #fffaf0;
+      border-radius: 12px;
+      padding: 20px;
+      border: 1px solid #f1e6c6;
+      box-shadow: 0 4px 10px rgba(201, 166, 70, 0.1);
+    }
+
+    .testimonial p {
+      font-style: italic;
+      color: #7a6a3a;
+      margin-bottom: 10px;
+    }
+
+    .testimonial h4 {
+      color: #5c4b1b;
+      font-weight: 600;
+    }
+
+    /* Footer */
+    .footer {
+      text-align: center;
+      background-color: #fff8e1;
+      padding: 25px;
+      color: #7a6a3a;
+      font-size: 0.9em;
+      margin-top: 50px;
+      border-top: 2px solid #f1e6c6;
+    }
+
+    .footer .socials a {
+      margin: 0 10px;
+      color: #c9a646;
+      text-decoration: none;
+      font-size: 1.3em;
+      transition: color 0.3s;
+    }
+
+    .footer .socials a:hover {
+      color: #b59337;
+    }
+
+    /* Floating WhatsApp Button */
+.whatsapp-float {
+  position: fixed;
+  width: 50px;
+  height: 50px;
+  bottom: 25px;
+  right: 25px;
+  background-color: #25d366;
+  border-radius: 50%;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  transition: transform 0.3s ease;
+}
+
+.whatsapp-float:hover {
+  transform: scale(1.1);
+}
+
+.whatsapp-float img {
+  width: 120px;
+  height: 120px;
+}
+
+/* Floating Instagram Button */
+.instagram-float {
+  position: fixed;
+  width: 50px;
+  height: 50px;
+  bottom: 100px; /* slightly above WhatsApp */
+  right: 25px;
+  background-color: #E1306C; /* Instagram gradient color */
+  border-radius: 50%;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  transition: transform 0.3s ease;
+}
+
+.instagram-float:hover {
+  transform: scale(1.1);
+}
+
+.instagram-float img {
+  width: 120px;
+  height: 120px;
+}
+
+  </style>
+</head>
+
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="logo">
+      <img src="logo2.jpg" alt="The Candled Co Logo" />
+      <h1>The Candled Co</h1>
+    </div>
+    <nav class="nav">
+      <a href="#home"><b>Home</b></a>
+      <a href="#products"><b>Shop</b></a>
+      <a href="#about"><b>About</b></a>
+      <a href="#contact"><b>Contact</b></a>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero" id="home">
+    <h2>Illuminating spaces with artisanal candles crafted to calm the senses and refine your ambience!</h2>
+    <p><b>Candles by Heena Sehgal</b></p>
+    <button class="btn" onclick="document.getElementById('products').scrollIntoView({behavior:'smooth'})">
+      Shop Now
+    </button>
+  </section>
+
+  <!-- Product Section -->
+  <section class="products" id="products">
+    <h2>Our Signature Collection</h2>
+    <div class="product-grid">
+      <div class="product-card">
+        <img src="candle1.jpg" alt="Golden Glow Candle" />
+        <h3>Golden Glow</h3>
+        <p>₹699</p>
+        <button class="buy-btn">Buy Now</button>
+      </div>
+      <div class="product-card">
+        <img src="candle2.jpg" alt="Vanilla Luxe Candle" />
+        <h3>Vanilla Luxe</h3>
+        <p>₹749</p>
+        <button class="buy-btn">Buy Now</button>
+      </div>
+      <div class="product-card">
+        <img src="candle3.jpg" alt="Amber Bliss Candle" />
+        <h3>Amber Bliss</h3>
+        <p>₹799</p>
+        <button class="buy-btn">Buy Now</button>
+      </div>
+      <div class="product-card">
+        <img src="candle4.jpg" alt="Rose Gold Candle" />
+        <h3>Rose Gold</h3>
+        <p>₹699</p>
+        <button class="buy-btn">Buy Now</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section class="about" id="about">
+    <h2>About Us</h2>
+    <div class="owner-gallery">
+      <img src="pic1.jpg" alt="Owner Picture 1">
+      <img src="pic2.jpg" alt="Owner Picture 2">
+      <img src="pic3.jpg" alt="Owner Picture 3">
+    </div>
+    <p>
+      <b><i>At THE CANDLED CO.</i></b>, a candle is more than light — it’s a moment of calm, a soothing ritual, and a touch of luxury for the senses. Each flame is crafted to restore balance, ease the mind, and transform your space into a sanctuary of serenity.
+
+I founded this brand to create candles that blend therapeutic scents, artisanal craftsmanship, and timeless design, turning everyday moments into experiences of mindfulness and well-being.
+
+Every candle is hand-poured with care, designed to nurture your senses, calm your spirit, and bring subtle elegance to your home.
+
+— <b><i>Heena Sehgal, Founder</i></b>
+    </p>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="testimonials">
+    <h2>What Our Customers Say</h2>
+    <div class="testimonial-grid">
+      <div class="testimonial">
+        <p>“Absolutely in love with these candles! ✨ The fragrance, the design, the vibe — everything is just pefect.❤”</p>
+        <h4>– Aastha Nischal</h4>
+      </div>
+      <div class="testimonial">
+        <p>“Absolutely loved these candles 🥰heartfelt glow to my space. 
+Thank you heena ❤”</p>
+        <h4>– Heena Handa</h4>
+      </div>
+      <div class="testimonial">
+        <p>“Thank you for the beautiful candles ✨❤
+Fragrance is too good👌
+Packing is so attractive.
+Thank you❤”</p>
+        <h4>– Ankit Khanna</h4>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer" id="contact">
+    <p>Contact us: <b>thecandledco.store@gmail.com</b> | +91 9779897704</p>
+    <div class="socials">
+      <a href="#">🌟</a>
+      <a href="#">🕯️</a>
+      <a href="#">💛</a>
+    </div>
+    <p>© 2025 The Candled Co. All rights reserved.</p>
+  </footer>
+
+  <!-- Floating WhatsApp Button -->
+  <a href="https://wa.me/message/IARJARS5RBGMJ1" class="whatsapp-float" target="_blank" title="Chat with us on WhatsApp">
+    <img src="whlogo.webp" alt="WhatsApp Chat">
+  </a>
+  <!-- Floating Instagram Button -->
+  <a href="https://www.instagram.com/the.candledco?igsh=MW0xZDgzdXRlaDZmeA%3D%3D&utm_source=qr" class="instagram-float" target="_blank">
+    <img src="inlogo.webp" alt="Instagram">
+  </a>
+</body>
+</html>
